@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="modal-dialog pt-5">
+    <div class="modal-content rounded-4 shadow">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fs-5">Delete Entry</h1>
+            </div>
+            <div class="modal-body py-0">
+                <p>Are you sure you want to delete "{{obj}}"?</p>
+            </div>
+            <div class="modal-footer flex-column border-top-0">
+                <input class="btn btn-lg btn-outline-danger w-100 mx-0 mb-2" type="submit" value="Confirm">
+                <a class="btn btn-lg btn-primary w-100 mx-0 mb-2" href="{{ request.META.HTTP_REFERER }}">Go back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

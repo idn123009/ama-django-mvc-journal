@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% load bootstrap_icons %}
+{% block content %}
+<div class="container w-50 pt-3">
+    <form method="POST"action="">
+        {% csrf_token %}
+        <div class="row align-items-center pb-3">
+            <div class="col text-center">
+                {{form.title}}
+                <div class='w-100'>
+                    <a type="submit" href="{{ request.META.HTTP_REFERER }}" class="float-start btn btn-outline-secondary">{% bs_icon 'arrow-left' %}</a>
+                    <button type="submit" class="float-end btn btn-outline-secondary" >{% bs_icon 'floppy' %}</button>
+                </div>
+            </div>
+        </div>
+        <div class="container w-75 mt-2">
+            <strong class="d-inline-block mb-2 text-primary">Mood: {{entry.mood}} </strong>
+            {{form.mood}}
+            {{form.body}}
+        </div>
+    </form>
+</div>
+{% endblock content %}

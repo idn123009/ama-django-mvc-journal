@@ -1,0 +1,18 @@
+<div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container w-50">
+        <div class="float-md-start">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <strong>Journal</strong>
+            </a>
+        </div>
+        <div class="float-md-end row row-cols-auto">
+            {% if request.user.is_authenticated %}
+            <p class="col my-auto pr-3 text-white">Hello, {{user.username}}</p>
+            <a class="col my-auto btn btn-sm btn-outline-secondary" href="{% url "logout" %}">Logout</a>
+            {% else %}
+            <a class="btn btn-sm btn-outline-secondary" href="{% url "login" %}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,23 @@
+[
+    {
+        "model": "journal_app.mood",
+        "pk": 1,
+        "fields":{
+            "mood": "Happy"
+        }
+    },
+    {
+        "model": "journal_app.mood",
+        "pk": 2,
+        "fields":{
+            "mood": "Neutral"
+        }
+    },
+    {
+        "model": "journal_app.mood",
+        "pk": 3,
+        "fields":{
+            "mood": "Sad"
+        }
+    }
+]

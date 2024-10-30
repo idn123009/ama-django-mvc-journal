@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% load bootstrap_icons %}
+{% block content %}
+<div class="container w-50">
+    <h1 class="m-4 fw-light text-center">Entries</h2>
+    <div class="row g-3"> 
+        <a class="btn btn-outline-primary" href="{% url "create-entry" %}">Write Entry</a>
+        {% for entry in entries %}
+            <div class="card">
+                <div class="card-body row">
+                    <div class="col">
+                        <strong class="d-inline-block mb-2 text-primary">{{ entry.mood.mood }}</strong>
+                        <h4 class="mb-0">{{ entry.title }}</h4>
+                        <p class="mb-1 text-muted">{{entry.created}}</p>
+                        <p class="card-text mb-auto">{{entry.body|truncatechars:50}}</p>
+                        <a class="mt-3 btn btn-outline-dark"href="{% url "entry" entry.id %}">View Entry</a>
+                    </div>
+                    <div class="col-md-auto">
+                        <a class="btn btn-outline-secondary" href="{% url "update-entry" entry.id %}">{% bs_icon 'pencil' %}</a>
+                        <a class="btn btn-outline-danger" href="{% url "delete-entry" entry.id %}">{% bs_icon 'trash-fill' %}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% load bootstrap_icons %}
+{% block content %}
+<div class="container w-50 pt-3">
+    <div class="row align-items-center pb-3">
+        <div class="col text-center position-relative">
+            <h3 class="my-1 fw-light w-100 border-0">{{ entry.title }}</h3>
+            <p class="fs-6 mb-0 text-muted">Created: {{entry.created}}</p>
+            <div>
+                <a class="float-start btn btn-outline-secondary" href="{% url "home"%}">{% bs_icon 'arrow-left' %}</a>
+                <a class="btn float-end btn-outline-danger ms-1" href="{% url "delete-entry" entry.id %}">{% bs_icon 'trash-fill' %}</a>
+                <a class="btn float-end btn-outline-secondary" href="{% url "update-entry" entry.id %}">{% bs_icon 'pencil' %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="container w-75 mt-4">
+        <strong class="d-inline-block mb-2 text-primary">Mood: {{entry.mood}} </strong>
+        <p>
+            {{entry.body}}
+        </p>
+    </div>
+</div>
+{% endblock content %}
+

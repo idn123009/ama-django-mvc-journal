@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load widget_tweaks %}
+</head>
+<body>
+    {% if messages %}
+    
+    {% endif %}
+    {% if page == 'login' %}
+    <div class="d-flex align-items-center justify-content-center text-center vh-100">
+        <form class="w-25" method="POST" action="">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+            <div class="col form-floating mb-2">
+                <input type="text" class="form-control" id="usernameFloating" name="username", placeholoder="Enter Username"/>
+                <label for="usernameFloating">Username</label>
+            </div>
+            <div class="form-floating mb-4">
+                <input type="password" class="form-control" id="passwordFloating" name="password", placeholoder="Enter Password"/>
+                <label for="passwordFloating">Password</label>
+            </div>
+            <input class="btn btn-outline-primary w-100 py-2" type="submit" value="Login">
+            <div class="my-3">
+                {% for message in messages %}
+                    <p class="text-danger">{{ message }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                <p class="m-0">Haven't signed up yet?</p>
+                <a href="{% url "register" %}">Sign up</a>
+            </div>
+        </form>
+    </div>
+
+    {% else %}
+    <div class="d-flex align-items-center justify-content-center text-center vh-100">
+        <form class="w-25" method="POST" action="">
+            {% csrf_token %}
+            <div class="col form-floating mb-2">
+                {{ form.username|add_class:"form-control"|attr:"name:username"|attr:"placeholder:Enter Username" }}
+                {{ form.username.label_tag }}
+            </div>
+            <div class="col form-floating mb-2">
+                {{ form.password1|add_class:"form-control"|attr:"name:password"|attr:"placeholder:Enter Password" }}
+                {{ form.password1.label_tag }}
+            </div>
+            <div class="col form-floating mb-2">
+                {{ form.password2|add_class:"form-control"|attr:"name:password"|attr:"placeholder:Re-enter Password" }}
+                {{ form.password2.label_tag }}
+            </div>
+            <input class="btn btn-outline-primary w-100 py-2" type="submit" value="Register">
+            <div class="my-3">
+                {% for message in messages %}
+                    <p class="text-danger">{{ message }}</p>
+                {% endfor %}
+            </div>
+            <div class="mt-4">
+                <p class="m-0">Already signed up?</p>
+                <a href="{% url "login" %}">Sign in</a>
+            </div>
+        </form>
+    </div>
+
+{% endif %}
+</body>
+</html>
