@@ -3,3 +3,5 @@
 * 22014210710
 * BSCybs
 * ITE6200
+
+**Run init.bat for initialization**
